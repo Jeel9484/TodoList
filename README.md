@@ -55,14 +55,60 @@ A FastAPI backend for the Todo application with SQLite/PostgreSQL database suppo
 - `PUT /todos/{todo_id}` - Update a todo
 - `DELETE /todos/{todo_id}` - Delete a todo
 
-## Deployment to Heroku
+## 🚀 Free Deployment Options
 
-### Prerequisites
+### Option 1: Railway (Recommended - Most Generous Free Tier)
 
-- Heroku CLI installed
-- Git repository
+Railway offers **$5/month free credit** and is perfect for FastAPI apps.
 
-### Deploy Steps
+#### Deploy to Railway (2 minutes):
+
+1. **Go to Railway**: https://railway.app
+2. **Sign up** with GitHub/Google
+3. **New Project** → Deploy from GitHub
+4. **Connect Repository**: Select `TodoList`
+5. **Automatic Deploy**: Railway detects Python and deploys automatically
+6. **Add PostgreSQL Database**:
+   - Go to your project dashboard
+   - Click "New" → "Database" → "PostgreSQL"
+   - Railway will provide DATABASE_URL automatically
+
+#### Railway Features:
+- ✅ **$5/month free credit** (500 hours/month)
+- ✅ **Automatic deployments** from GitHub
+- ✅ **Built-in PostgreSQL** database
+- ✅ **HTTPS certificates** included
+- ✅ **Custom domains** supported
+
+### Option 2: Render (Free Tier Available)
+
+Render offers a good free tier for web services.
+
+#### Deploy to Render:
+
+1. **Go to Render**: https://render.com
+2. **New** → "Web Service"
+3. **Connect GitHub**: Select `TodoList` repository
+4. **Configure**:
+   - **Runtime**: Python 3
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+5. **Deploy**
+
+### Option 3: Replit (Free Hosting)
+
+Replit can host web applications for free.
+
+#### Deploy to Replit:
+
+1. **Go to Replit**: https://replit.com
+2. **Import from GitHub**: Import your repository
+3. **Configure** as Python web app
+4. **Run** the application
+
+## Legacy Deployment (Heroku - Limited Free Tier)
+
+### Deploy to Heroku:
 
 1. **Login to Heroku:**
    ```bash
@@ -74,7 +120,7 @@ A FastAPI backend for the Todo application with SQLite/PostgreSQL database suppo
    heroku create your-todo-api-name
    ```
 
-3. **Add PostgreSQL addon (required for production):**
+3. **Add PostgreSQL addon:**
    ```bash
    heroku addons:create heroku-postgresql:hobby-dev
    ```
@@ -84,29 +130,10 @@ A FastAPI backend for the Todo application with SQLite/PostgreSQL database suppo
    heroku config:set ENVIRONMENT=production
    ```
 
-5. **Deploy to Heroku:**
+5. **Deploy:**
    ```bash
-   git add .
-   git commit -m "Configure for Heroku deployment"
    git push heroku master
    ```
-
-6. **Open your deployed app:**
-   ```bash
-   heroku open
-   ```
-
-### Alternative: Deploy via GitHub
-
-1. **Connect to GitHub:**
-   - Go to Heroku Dashboard
-   - Create new app
-   - Connect to your GitHub repository
-   - Enable automatic deploys
-
-2. **Configure environment variables in Heroku:**
-   - Go to Settings → Config Vars
-   - Add: `ENVIRONMENT` = `production`
 
 ## Environment Variables
 
