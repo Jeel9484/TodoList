@@ -10,8 +10,10 @@ Base.metadata.create_all(bind=engine)
 
 import os
 
-# Allow all origins in production, localhost for development
-allowed_origins = ["*"] if os.getenv("ENVIRONMENT") == "production" else ["http://localhost:3000"]
+# Allow all origins in production (Railway), localhost for development
+# Check for Railway environment or production environment
+is_production = os.getenv("ENVIRONMENT") == "production" or os.getenv("RAILWAY_ENVIRONMENT") is not None
+allowed_origins = ["*"] if is_production else ["http://localhost:3000"]
 
 app.add_middleware(
     CORSMiddleware,
